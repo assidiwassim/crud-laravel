@@ -54,7 +54,7 @@ class HomeController extends Controller
 
         public function afficherContacts()
         {   
-            $contacts = DB::table('contacts')->select('id','nom', 'prenom', 'message')->paginate(20);
+            $contacts = DB::table('contacts')->select('id','nom', 'prenom', 'message')->paginate(5);
 
              return view('liste_contacts')->with("contacts", $contacts);
         }

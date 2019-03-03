@@ -30,7 +30,7 @@
                         <tr>
                          <th>Nom</th>
                          <th>Prenom</th>
-                         <th>Sujet</th>
+                         <th>Message</th>
                          <th></th>
                          <th></th>
                         </tr>

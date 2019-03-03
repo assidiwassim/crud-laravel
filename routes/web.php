@@ -22,3 +22,9 @@ Route::get('/','HomeController@afficherContacts');
 Route::get('/info_contact/{id}','HomeController@afficherContact');
 Route::get('/supprimer_contact/{id}','HomeController@supprimerContact');
 
+
+
+Route::get('/ter','EmailsController@testEmailRaw');
+Route::get('/tec','EmailsController@testEmailClassique');
+Route::get('/tem','EmailsController@testEmailMailable');
+
