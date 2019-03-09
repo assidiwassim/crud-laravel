@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Mail;
+use App\Mail\EmailInfoTest;
+
 
 class EmailsController extends Controller
 {
@@ -24,7 +26,7 @@ class EmailsController extends Controller
 
         public function testEmailClassique(Request $request)     { 
 
-                Mail::send('hello', [], function ($message) { 
+                Mail::send('hello', ['sujet'=>"jkhkj",'messages'=>"gggg"], function ($message) { 
                             $message->to('assidi.wassim.fsm@hotmail.com');    
                             $message->subject('Envoi email classique avec Laravel');
                 });    
@@ -32,15 +34,7 @@ class EmailsController extends Controller
                 return "email envoyé avec send\n<br>";
         }
 
-        public function testEmailMailable(Request $request)     { 
-
-            Mail::send('hello', [], function ($message) { 
-                        $message->to('assidi.wassim.fsm@hotmail.com');    
-                        $message->subject('Envoi email avec mailable');
-            });    
-
-            return "email envoyé avec mailable\n<br>";
-        }
+       
 
         public function sendEmail(Request $request)     { 
 
@@ -51,5 +45,15 @@ class EmailsController extends Controller
 
             return "email envoyé\n<br>";
         }
+
+        public function testEmailMailable(Request $request)     { 
+
+           
+            Mail::to('assidi.wassim.fsm@hotmail.com')->send(new EmailInfoTest("s1","m1"));
+
+
+            return "email envoyé avec mailable\n<br>";
+        }
+        
      
 }

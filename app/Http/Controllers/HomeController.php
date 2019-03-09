@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Mail\EmailConfirmation;
+use Mail;
 
 class HomeController extends Controller
 {
@@ -46,7 +48,11 @@ class HomeController extends Controller
             'code_postale' => $request->input('code'),
             'message' => $request->input('message')
            ]);
-           
+
+
+           Mail::to($request->input('email'))
+           ->send(new EmailConfirmation($request->input('prenom'),$request->input('nom'), $request->input('email'),$request->input('tel'),$request->input('pays'),$request->input('address'),$request->input('ville'),$request->input('code'),$request->input('message')));
+
 
         
            return view('confirmation')->with("type","insert");
